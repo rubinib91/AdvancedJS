@@ -1,0 +1,140 @@
+<script>
+
+    //Declaration, Initialization, Redeclare and reassign
+    
+    //Using var
+
+    var age; //Declaration 
+    console.log(age); // return undefined
+     age=30; //Initialization 
+    console.log(age); // return initialized value
+    var age=50 //Redecalred
+    console.log(age); // return redeclared value
+    age=40 //reassign 
+    console.log(age); // return reassigned value
+
+    //Using let 
+
+let mark;   // Declaration
+console.log(mark); // returns undefined
+  mark=90; // Initialization
+ console.log(mark); // Return Initialized value
+ mark=95 //reassign
+ console.log(mark); // Return reassigned value
+ //let mark=100; // We Can't Redeclare
+
+ //Using const
+
+ //const price; We cant declare
+ const price=75 // It should be initialized when it is declared
+console.log(price); // return initialized value
+// price=90 We cant reassign and we cant redeclare
+
+//primitive Data types
+
+let name="Sonia" //string
+console.log(`My name is ${name}`);
+let Age=25 //number
+console.log(`My age is ${Age}`);
+let married=true //boolean
+console.log(`It returns a boolean value ${married}`);
+
+//conditional statements
+
+let a=10
+let b=20
+
+if(a>b)
+{
+    console.log(`The number ${a} is Greater`);
+    
+}
+else
+    console.log(`The number ${b} is Greater`);
+
+let mark1=90
+if(mark1>=95)
+    console.log(`The Mark ${mark1} greater than 95 and your grade is A `);
+else if(mark1>=85)
+    console.log(`The Mark ${mark1} greater than 85 and your grade is B `);
+else if(mark1>=70)
+    console.log(`The Mark ${mark1} greater than 70 and your grade is C `);
+else if(mark1>=60)
+    console.log(`The Mark ${mark} greater than 60 and your grade is D `);
+
+    for(let x=1;x<=5;x++)
+
+{
+    console.log(`Loop ${x}`);
+    
+}
+
+//Operators
+
+//Assignment Operator 
+let x=20
+console.log(`Assignment operator example for = ${x}`);
+x+=3
+console.log(`Assignment operator example for += ${x}`);
+x-=1
+console.log(`Assignment operator example for -= ${x}`);
+x*=2
+console.log(`Assignment operator example for *= ${x}`);
+x/=2
+console.log(`Assignment operator example for /= ${x}`);
+x%=2
+console.log(`Assignment operator example for %= ${x}`);
+
+//Arithmetic Operator
+let n=10
+let c=15
+
+x=n+c
+console.log(`Arithmetic Operator Example + ${x}`);
+x=n-c
+console.log(`Arithmetic Operator Example - ${x}`);
+x=n*c
+console.log(`Arithmetic Operator Example * ${x}`);
+x=n/c
+console.log(`Arithmetic Operator Example / ${x}`);
+x=n%c
+console.log(`Arithmetic Operator Example % ${x}`);
+x++
+console.log(`Arithmetic operator example for ++ ${x}`);
+x--
+console.log(`Arithmetic operator example for -- ${x}`);
+
+
+
+let m="10"
+// comparision Operator
+
+if(n>10)
+console.log('The number is greater than 10'); 
+ if(m==n)
+ {
+    console.log(`The value ${m} and ${n} are equal using ==`);
+    
+ }
+ if(m===n)
+console.log('The value of m,n and its data type both are same');
+else
+console.log('The value of m,n are equal and its data type is not equal using ===');
+
+//Logical Operator
+
+if(n>5 && n<10)
+{
+    console.log('The number is between 5 and 10'); //Logical Operator
+    
+}
+if(n>5 || n>10)
+{
+    console.log('The number is greater than 5'); //Logical Operator
+    
+}
+
+
+
+</script>
+
