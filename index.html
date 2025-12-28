@@ -3,11 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Advanced JS</title>
+    <style>
+        body {
+            background-color: #1e1e2f; /* dark blue/purple background */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            background-color: #2b2b3d; /* card background */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 15px; /* rounded corners */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5); /* shadow */
+            padding: 20px;
+            gap: 15px;
+            width: 300px;
+        }
+
+        .container a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px;
+            background-color: #444466; /* button-like effect */
+            border-radius: 8px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .container a:hover {
+            background-color: #5c5c8a; /* hover effect */
+        }
+    </style>
 </head>
 <body>
-    <div style=" background-color: black; justify-content: center; display: flex; flex-direction: column; border: 10px; margin: 5px; padding: 10px; gap: 10px;">
-          <a href="./Day_1_Intro/intro1.html" style="color: white;" style="color: white;">Variables.Operators,COnditional Statements</a>
+    <div>
+        <h1>Advanced JS</h1>
+        <div class="container">
+            <a href="./Day_1_Intro/intro1.html">Variables, Operators, Conditional Statements</a>
+            <a href="./Day_2_Functions/functiontypes.html">Functions</a>
+        </div>
     </div>
 </body>
 </html>

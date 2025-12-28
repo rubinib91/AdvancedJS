@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Types</title>
+</head>
+<body>
+    <script>
+        // normal function
+        const a=10;
+        const b=20;
+        function add1(a,b){
+            const c=a+b;
+            console.log(`By using Normal add function ${c}`);
+        }
+        add1(a,b)
+
+        //Arrow function
+        const add2=(e,d)=>{
+            const f=e+d;
+            console.log(`By using Arrow function ${f}`)
+        }
+        add2(1,2)
+
+        //Function Expression
+       const add3=function(x,y){
+            z=x+y
+     console.log(`By using function expression ${z}`)
+ 
+        }
+        add3(30,40)
+
+        const greet=(name)=>{
+            console.log(`Hello ${name}`);
+            
+        }
+        greet('Rubini')
+
+        const calculatebill=(amount,taxpercentage)=>{
+            const taxamount=amount*(taxpercentage/100)
+            const billamt=amount+taxamount
+            console.log(`The Total Bill Amount is ${billamt}`);
+            
+        }
+        calculatebill(1000,10)
+
+        //factorial Number
+        let factor=1
+        let num=6
+        const factorial=(num)=>{
+            for(let i=1;i<=num;i++)
+            {
+            factor=i*factor;
+            }
+             console.log(`The facorial of ${num} is ${factor}`)
+        }
+       
+        factorial(num)
+
+        // Reverse a string
+    
+        let reversestr=""
+        const reverse=(name)=>{
+        for(let n=name.length-1;n>=0;n--)
+        {
+            reversestr+=name[n]
+            }
+        console.log(`The reversed string of ${name} is ${reversestr}`);
+    }
+    reverse("Eniyaa")
+
+    //Second largest Number
+    let arr = [23, 35, 12, 67, 19]
+    const secondLargest=(arr)=>{
+for (let z = 0; z < arr.length; z++) {
+    for (let y = z + 1; y < arr.length; y++) {
+        if (arr[z] < arr[y]) {
+            let temp = arr[z];
+            arr[z] = arr[y];
+            arr[y] = temp;
+        }
+    }
+}
+    }
+secondLargest(arr)
+console.log(`The second largest number in array is ${arr[1]}`);
+
+//Group by age
+
+const groupbyage=(people)=> {
+  let result = {};
+
+  for (let i = 0; i < people.length; i++) {
+    let age = people[i].age;
+    let name = people[i].name;
+        if (!result[age]) {
+      result[age] = [];
+    }
+
+    result[age].push(name);
+  }
+return result
+}
+const people = [
+  { name: "Ajay", age: 20 },
+  { name: "Ravi", age: 21 },
+  { name: "Kumar", age: 20 },
+  { name: "Sara", age: 22 },
+];
+
+console.log(groupbyage(people));
+
+//square
+let snum
+let num1=5
+const sqrnum=(num1)=>{
+ snum=num1*num1
+} 
+sqrnum(num1)
+console.log(`The square of the number ${num1} is ${snum}`)
+
+//sum all items in array
+    let sum=0;
+const sumall=(...numbers)=>{
+    for(let l=0;l<numbers.length;l++){
+        sum+=numbers[l]
+    }
+}
+sumall(10,15,20,25)
+console.log(`The sum of all numbers is ${sum}`)
+
+//find pass marks
+
+const marks = [98, 45, 67, 30, 88, 76];
+    
+const passmarks=(mark)=>mark.filter(mark=>mark>=50)
+console.log(passmarks(marks))
+
+// TO Uppercase
+
+let firstname="Prabhu"
+let lastname="Ruba"
+let newname;
+function changeuppercase(fname,lname){
+    newname=fname.toUpperCase()+""+lname.toUpperCase()
+}
+changeuppercase(firstname,lastname)
+console.log(`The Changed name is ${newname}`);
+
+//console log output
+
+
+function add(a, b) {
+  return a + b;
+}
+
+const sub = (a, b) => {
+  return a - b;
+};
+console.log(add(2, 3));
+console.log(sub(5, 2));
+
+
+
+    //Prime number
+    let number=18
+    let prime=true
+    const findprime=(number)=>{
+    
+    for(let b=2;b<number;b++){
+    if(number%b==0){
+        prime=false
+        
+    }
+    }
+    if(prime==false)
+    {
+            console.log(`${number} is Not a prime Number`)
+
+    }
+    else
+    {
+    console.log(`${number} is a prime number`)
+
+    }
+}
+findprime(number)
+    </script>
+    
+</body>
+</html>
