@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Conditional Statements, Loops and Switch</h1>
+<script>
+    //find even numbers in array
+    let values=[23,43,12,67,55,62,90]
+    let newarr=[]
+    const even=(values)=>{
+    for(let i=0;i<values.length;i++)
+{
+    if(values[i]%2==0)
+{
+    newarr.push(values[i])
+}
+}
+return newarr
+
+}
+let newvalues=even(values)
+console.log(`The even Numbers in array is`,newvalues);
+
+//switch 
+let day=6
+switch(day){
+    case 1:console.log("The day is Sunday")
+    break
+    case 2:console.log("The day is Monday")
+    break
+    case 3:console.log("The day is Tuesday")
+    break
+    case 4:console.log("The day is Wednesday")
+    break
+    case 5:console.log("The day is Thursday")
+    break
+    case 6:console.log("The day is Friday")
+    break
+    case 7:console.log("The day is Saturday")
+    break
+   default:console.log("Invalid input, Please enter a number between 1 to 7")
+}
+
+//Truthy values,falsy values
+const truthy=()=>{
+let a=0;
+let name=""
+let mark=[]
+let studetails={}
+let greet="hello"
+let b=false
+let c=true
+if(a){
+    console.log('a is a truthy value',a);
+    
+}
+else
+console.log('a is a falsy value',a);
+if(name){
+    console.log('Empty space is a truthy value',name);
+    
+}
+else
+console.log('empty space is a falsy value',name);
+
+if(mark){
+    console.log('Empty array is a truthy value',mark);
+    
+}
+else
+console.log('Empty array is a falsy value');
+if(studetails){
+    console.log('Empty object is a truthy value',studetails);
+    
+}
+else
+console.log('Empty object is a falsy value');
+if(greet){
+    console.log('String with value is truthy value',greet);
+    
+}
+else
+console.log('String with value is falsy value');
+if(b){
+    console.log('boolean with false as a value is a truthy value',b);
+    
+}
+else
+    console.log('boolean with false as a value is a falsy value',b);
+if(c){
+    console.log('boolean with true as a value is a truthy value',c);
+    
+}
+else
+    console.log('boolean with true as a value is a truthy value',c);
+let n
+if(n){
+    console.log('If the number is not defined its a truthy value');
+}
+    else
+    console.log('If the number is decalred but not defined its a falsy value',n);
+
+}
+truthy()
+
+//array and truthy values
+
+let mixedvalues=[0,1,"true","hai",[],""]
+    let returnarray=[]
+const displaytruthy=(mixedvalues)=>{
+for(let i=0;i<mixedvalues.length;i++)
+{
+    if(mixedvalues[i])
+{
+    returnarray.push(mixedvalues[i])
+
+}
+}
+}
+displaytruthy(mixedvalues)
+    console.log(returnarray);
+
+const returnname=(first,last,nick)=>{
+    if(first&&last){
+        console.log('The first and last name is',first,last);
+        
+    }
+    else if(last){
+        console.log('Last name only present',last);
+        
+    }
+    else if(nick){
+    console.log('NIce name only present',nick);
+    }
+    else
+    console.log('Anonymous');
+    
+}
+returnname("Priya","Ragav","")
+
+//student grade display
+const findgrade=(studentdet)=> {
+  let grade = {
+    A: 0,
+    B: 0,
+    C: 0
+  };
+
+  for (let i = 0; i < studentdet.length; i++) {
+    let marks = studentdet[i].marks;
+
+    if (marks >= 90) 
+    {
+      grade.A++;
+    } 
+    else if (marks >= 75) 
+    {
+      grade.B++;
+    } 
+    else {
+      grade.C++;
+    }
+  }
+
+  return grade;
+}
+let studentdet = [
+  { name: "kani", marks: 92 },
+  { name: "anbu", marks: 81 },
+  { name: "kavinya", marks: 74 },
+  { name: "Kishore", marks: 88 },
+  { name: "Manju", marks: 65 },
+  { name: "Anu", marks: 79 }
+]
+console.log(findgrade(studentdet));
+
+// multiplier
+let num1=10
+let num2=20
+const multiplier=(num1)=>{
+    console.log(`The first number is ${num1}`);
+    
+    getnumber(num2)
+}
+const getnumber=(num2)=>{
+    console.log(`The second number is ${num2}`);
+    
+    let result=num1*num2
+    console.log(`The Product of two numbers ${num1} and ${num2} is ${result}`);
+}
+multiplier(num1)
+</script>
+</body>
+</html>
