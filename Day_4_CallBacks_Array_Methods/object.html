@@ -1,0 +1,95 @@
+<script>
+    //callback to display message
+    const message=(user,news)=>{
+        console.log('Welcome to',user);
+        news()
+    }
+    const news=()=>{
+        console.log('Your Task is completed');
+        
+    }
+    message("Zoho",news)
+
+// call back to check age eligibility
+const agecheck=(age,adultcheck)=>{
+    console.log('My age is',age);
+    adultcheck(age)
+}
+const adultcheck=(age)=>{
+    if(age>=18){
+        console.log('You are elgible for vote');
+        
+    }
+    else
+    console.log('You are not eligible for vote');
+    
+}
+agecheck(25,adultcheck)
+
+//API call
+
+const getdata=(callbackfunc)=>
+ {
+  console.log('API call')
+
+  setTimeout(() => {
+    callbackfunc();
+  }, 2000)
+}
+
+function onSuccess() {
+  console.log('This is a callback function');
+  console.log('Process completed successfully');
+}
+
+getdata(onSuccess);
+
+
+// remove an element from array
+let mark=[90,76,89]
+console.log('Before delete:The array values are',mark);
+mark.shift()
+console.log('After delete: The array values are',mark);
+
+//Replace last element without using index
+
+let students=["Anitha","Ravi","Karki","Arun","Kavi"]
+console.log('The original array is ',students);
+students.pop()
+console.log('Delete last element',students);
+students.push("Kanmani")
+console.log('The values after replacement',students);
+
+//Remove exactly two elements from middle of an array
+let price=[25,35,45,55,65,75,85]
+console.log('The array original array vlues',price);
+
+let midvalue=price.length/2
+price.splice(midvalue,2)
+console.log('The array values after remove middle elements',price);
+
+// Find even numbers in array using filter
+
+let numbers=[23,43,22,66,78,12,44,17,95]
+const even=numbers.filter(num=>num%2==0)
+    console.log('The even number array is ', even);
+
+    //Convert array of prices to gst added prices
+
+    let unitprice=[50,100,200,25,75]
+    let gst=5
+    console.log('Prices before GST',unitprice);
+    
+    const newprice=unitprice.map(pricevalue=>pricevalue+(pricevalue*gst)/100)
+     console.log('Price after GST added:',newprice);
+
+     // Find total salary 
+
+     let salary=[20000,30000,25000,35000,60000,10000]
+     console.log('The salary of employees are',salary);
+     let totalsalary=salary.reduce((total,salary)=>total+salary)
+     console.log('The total salary in the department is',totalsalary);
+     
+     
+     
+</script>
