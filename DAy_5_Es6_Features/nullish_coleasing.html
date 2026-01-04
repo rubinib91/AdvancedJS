@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Nullish Coleasing Operator</h1>
+
+    <script>
+// using ||
+    const value = 20
+const result=value || 10
+console.log('Using || operator',result)
+
+//using ??
+const value1= null;
+const result1 = value1 ?? 10;
+console.log('Using ?? operator',result1); 
+
+// string handling using ??
+
+const name = "";
+const username = name ?? "Guest";
+
+console.log('Empty string using ?? operator',username); 
+
+// default value using ??
+let price;
+const finalPrice = price ?? 100;
+
+console.log('Default value using ??',finalPrice); 
+
+
+</script>
+
+</body>
+</html>

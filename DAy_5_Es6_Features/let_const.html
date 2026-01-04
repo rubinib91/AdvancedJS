@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Using var
+        var name = "Raveena";
+        var age = 20;
+
+const display=()=>
+ {
+    var message = "Name: " + name + ", Age: " + age;
+    console.log(message);
+}
+
+display();
+
+// Using let,const
+
+const name1 = "Rahini";   
+let age1 = 22;            
+
+function display1() {
+    const message1 = `Name: ${name1}, Age: ${age1}`;
+    console.log(message1);
+}
+
+display1();
+
+let x = 10;
+
+if (x === 10) {
+    let y = 20;   // y is block level
+    console.log("Inside if block the value is", y); 
+}
+
+console.log("Outside if block global varible value is:", x); // x is global
+//console.log(y); // outside if block it returns undefined
+
+//Rsassign using const
+
+const number = 10;
+//number = 20; it reurns type error
+
+
+//Identify where var causes a bug and fix it with let.
+
+var count = 5;
+
+if (true) {
+    var count = 10;   
+}
+console.log(count); // The output is 10. It is an error because the value 10 is a block level
+
+let count1 = 5;
+
+if (true) {
+    let count1 = 10;   
+}
+
+console.log(count1); // The output is 5. It is correct because the global variable value is used
+
+
+    </script>
+</body>
+</html>

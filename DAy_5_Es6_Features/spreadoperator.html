@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Spread Operator</h1>
+    <script>
+        
+        // Copy an array using spread.
+
+     const names=["Anbu","Arivu","Alagu","Adhi"]
+     const copyname=[...names]
+     console.log(`Array copied using spread operator${copyname}`);
+     
+     // Merge 2 arrays using spread
+
+     const arr1=[1,2,3,4,5]
+     const arr2=[6,7,8,9,10]
+     const arr3=[...arr1,...arr2]
+     console.log(`The first array is ${arr1}`);
+     console.log(`The second array is ${arr2}`);
+     console.log(`Merge two arrays using spread operator ${arr3}`);
+     
+     // Update an object using spread.
+
+     const empdet={name:"Eniyaa",age:"10",salary:25000}
+     const updateemp={...empdet,empid:235}
+     console.log("The original values are:", empdet);
+     console.log("The updated values are:",updateemp);
+     
+     //Pass array values into a function using spread.
+
+     const values=[1,5,9,7,3]
+     const displayarr=(...values)=>{
+        for(let i=0;i<values.length;i++)
+     {
+        console.log('The values are',values[i]);
+        
+     }
+     }
+     displayarr(values)
+     
+    </script>
+</body>
+</html>

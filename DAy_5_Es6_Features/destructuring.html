@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Destructuring</h1>
+    <script>
+        //Destructuring an array
+        const arr=[10,20,30]
+        const [a,b,c]=arr
+        console.log('Original array values are',arr);
+        console.log('destructuring first value',a);
+        console.log('destructuring second value',b);
+        console.log('destructuring third value',c);
+
+        // Destructure properties from an object.
+
+ let studet={name:"eniyaa",age:10,standard:5}
+ const {name,age,standard} = studet
+  console.log('Original values are',studet);
+        console.log('The name is',name);
+        console.log('The age is',age);
+        console.log('The class is',standard);
+
+// Rename variables while destructuring.
+const {name:studentname}=studet
+console.log('The renaming using destructuring',studentname);
+
+// Destructure function parameters.
+
+const displaystudent=({name,age,standard})=>{
+    console.log('Destructuring values passed as parameter');
+        console.log('Name',name);
+    console.log('Age',age);
+
+}
+displaystudent(studet)
+    </script>
+</body>
+</html>

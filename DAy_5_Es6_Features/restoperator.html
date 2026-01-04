@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Rest Operator</h1>
+    <script>
+        //Create a function that accepts unlimited arguments.
+    const add=(...digits)=>{
+    
+            console.log('The values get using rest operator',digits);
+            
+        }
+    
+    add(1,2,3,4,5,6)
+
+    //Use rest parameter with reduce.
+
+    const add1=(...digits)=>{
+        
+        const total=digits.reduce((total,number)=>total+number,0)    
+            
+        console.log('rest operator and reduce is used to find total');
+        console.log('The array values are',digits);
+        
+        console.log('The total is ', total);
+        
+        
+    }
+    add1(1,2,3,4,5,6)
+
+    // Destructuring using rest operator
+   const student = {
+  name: "Eniyaa",
+  age: 10,
+  std: "5th",
+  section:"A"
+}
+
+const { name, age, ...otherDetails } = student;
+
+console.log(`The values in object is`,student);  
+console.log("The name is",name);
+        
+console.log("The age is",age);           
+console.log('The other details are',otherDetails);  
+
+//SPread and rest
+const addNumbers = (a, b, ...rest) => {
+  console.log("Remaining values:", rest);
+  return a + b + rest.reduce((sum, n) => sum + n, 0);
+};
+
+const values = [10, 20, 30, 40];
+const result = addNumbers(...values);
+console.log("Total:", result);
+    </script>
+</body>
+</html>

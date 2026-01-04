@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Arrow Functions</h1>
+
+    <script>
+
+        // Normal function to arrow function
+
+    function add(a, b) {
+    return a + b;
+}
+const c=add(10,5)
+console.log(`Using Normal Function ${c}`);
+
+//Arrow function
+
+const a1=10
+const b1=20
+const add1 = () => a1 + b1;
+console.log(`Using Arrow Function ${add1()}`)
+
+// Arrow function with one parameter
+
+const greeting="Hai"
+const messages=(msg)=>{
+    console.log('Arrow Function with one parameter:',msg)
+}
+messages(greeting)
+
+// Arrow Function Return object
+
+const studet=()=>{
+    const student={name:"Meena",id:234,mark:90}
+    return student
+}
+console.log('Arrow function returns an object:',studet())
+
+// Use arrow function inside map
+
+const num=[10,20,30]
+const cube=num.map((n)=>n*n*n)
+console.log(`The cube values of ${num} are ${cube}`);
+
+    </script>
+</body>
+</html>

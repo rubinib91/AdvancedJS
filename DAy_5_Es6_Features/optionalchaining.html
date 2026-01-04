@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Optional Chaining</h1>
+    <script>
+        // Access nested object using ?
+        const user = {
+  name: "Eniyaa",
+  address: {
+    city: "Chennai",
+    pincode: 600001
+  }
+};
+
+
+console.log(user?.address?.city);      
+console.log(user?.address?.street);   
+console.log(user?.contact?.phone);   
+
+//Replace && condition with optional chaining.
+
+//using &&
+const username = {
+  profile: {
+    name: "Eniyaa"
+  }
+};
+
+const userName = username && username.profile && username.profile.name;
+console.log('Using & operator',userName);
+
+// Using optional chaining
+const username1 = username?.profile?.name;
+console.log('Using ? operator',username1);
+
+//Optional chaining for array access
+const data = {items: [10, 20, 30]}
+
+console.log(data?.items?.[0]); 
+console.log(data?.items?.[5]); 
+
+
+    </script>
+</body>
+</html>

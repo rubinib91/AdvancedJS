@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ternary Operator</h1>
+    <script>
+        //Check even or odd using ternary.
+   const num = 7
+
+const result = (num % 2 === 0) ? "Even" : "Odd";
+
+console.log(`The number ${num} is ${result}`);
+
+// Find pass or fail using ternary.
+
+const mark=50
+const result1=(mark>40)? "Pass":"Fail"
+console.log(`Your mark is ${mark} and you get ${result1}`);
+
+// Replace simple if–else with ternary.
+
+const mark1=90
+if(mark>40)
+{
+    console.log('You got pass mark')
+}
+else
+{
+        console.log('You got fail mark')
+
+}
+// replace with ternary
+const result2=(mark1>40)? "Pass":"Fail"
+console.log(`Your mark is ${mark1} and you get ${result2}`);
+
+// Nested ternary
+
+const a = -5;
+
+const displayresult = (a > 0)
+  ? "Positive"
+  : (a < 0)
+    ? "Negative"
+    : "Zero";
+
+console.log(`${a} is ${displayresult}`);
+
+    </script>
+</body>
+</html>

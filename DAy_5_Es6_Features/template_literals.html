@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Template Literals</h1>
+    <script>
+        // Print using template literals
+        
+        const user = "Rubini"
+        const city = "Chennai"
+        console.log(`User Details: 
+        Name: ${user}
+        City: ${city}`)
+
+        //Convert old string concatenation to template literal.
+
+ var name = "Raveena"
+ var age = 20
+const display=()=>
+ {
+
+    console.log("Using old string concatenation :  Name: " + name + ", Age: " + age);
+}
+display();
+
+// Using let,const
+
+const name1 = "Rahini"  
+let age1 = 22         
+
+function display1() {
+    console.log(`Using Template Literals:
+     Name: ${name1}
+     Age: ${age1}`);
+}
+display1();
+
+//Create a multiline string using backticks.
+
+const string="Hai"
+const wish="Hello"
+const welcome="Welcome to the Back End Course"
+const day="Day 1"
+console.log("MultiLine string dispalyed using backticks")
+console.log(`${string} ${wish} ${welcome} ${day}`);
+
+// Use expressions inside ${}.
+
+const c=25
+const d=15
+const sub=(c,d)=>{
+    console.log(`The difference between ${c} and ${d} is ${c-d}`)
+}
+sub(c,d)
+    </script>
+</body>
+</html>
