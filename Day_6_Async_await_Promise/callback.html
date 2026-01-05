@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Back FUnction</title>
+</head>
+<body>
+    <h1>Call Back Function</h1>
+    <script>
+        //set time out call back print message
+        const printmsg=(callback)=>{
+            setTimeout(() => {
+                callback("Welcome to call back function")
+            },3000);
+        }
+
+        printmsg((result)=>{
+            console.log(result)
+        })
+
+        // calculator based calculator
+
+    const calculator = (a, b, operation) => {
+        operation(a, b);
+    }
+
+    const add = (x, y) => {
+        console.log("Addition:", x + y);
+    };
+
+    const subtract = (x, y) => {
+        console.log("Subtraction:", x - y);
+    };
+    calculator(10, 5, add)
+    calculator(10, 5, subtract)
+
+    // Nested callback
+
+    const msg = (callback1) => {
+        console.log("Hai");
+
+        callback1("Welcome", (callback2) => {
+            callback2("How are you?");
+        });
+    };
+
+    msg((show, nextCallback) => {
+        console.log(show);
+
+        nextCallback((finalMsg) => {
+            console.log(finalMsg);
+        });
+    });
+
+    // Simulate API using callback
+    
+    const getdata = (callback) => {
+        console.log("Get data from API");
+
+        setTimeout(() => {
+            const data = {
+                id: 1,
+                name: "Rubini",
+                role: "Frontend Developer"
+            };
+            callback(data);
+        }, 2000);
+    };
+
+    getdata((result1) => {
+        console.log("Received data:", result1);
+    });
+
+
+    </script>
+
+    
+</body>
+</html>
