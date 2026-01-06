@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master JS Concepts</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-slate-100 antialiased selection:bg-brand-500 selection:text-white overflow-hidden">
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside
+            class="w-64 bg-slate-950 border-r border-slate-800 flex flex-col hidden md:flex h-full fixed top-0 left-0 z-10">
+            <div class="p-6">
+                <h1
+                    class="text-2xl font-bold bg-gradient-to-r from-brand-500 to-purple-500 bg-clip-text text-transparent">
+                    JS Master
+                </h1>
+                <p class="text-xs text-slate-500 mt-2">Interactive Notes</p>
+            </div>
+
+            <nav class="flex-1 overflow-y-auto px-4 space-y-1 custom-scrollbar pb-20">
+                <button onclick="showSection('intro')"
+                    class="nav-item w-full text-left px-4 py-3 rounded-xl transition-all hover:bg-slate-800 hover:text-brand-400 text-slate-400 font-medium active-nav"
+                    data-target="intro">
+                    Introduction
+                </button>
+
+                <div class="pt-4 pb-2 text-xs font-semibold text-slate-600 uppercase tracking-wider pl-4">Core Concepts
+                </div>
+
+                <button onclick="showSection('variables')"
+                    class="nav-item w-full text-left px-4 py-2 rounded-lg transition-all hover:bg-slate-800 hover:text-brand-400 text-slate-400 text-sm font-medium"
+                    data-target="variables">
+                    1. Variables
+                </button>
+                <button onclick="showSection('datatypes')"
+                    class="nav-item w-full text-left px-4 py-2 rounded-lg transition-all hover:bg-slate-800 hover:text-brand-400 text-slate-400 text-sm font-medium"
+                    data-target="datatypes">
+                    2. Data Types
+                </button>
+                <button onclick="showSection('operators')"
+                    class="nav-item w-full text-left px-4 py-2 rounded-lg transition-all hover:bg-slate-800 hover:text-brand-400 text-slate-400 text-sm font-medium"
+                    data-target="operators">
+                    3. Operators
+                </button>
+                <button onclick="showSection('flow')"
+                    class="nav-item w-full text-left px-4 py-2 rounded-lg transition-all hover:bg-slate-800 hover:text-brand-400 text-slate-400 text-sm font-medium"
+                    data-target="flow">
+                    4. Conditional Statements
+                </button>
+                <button onclick="showSection('functions')"
+                    class="nav-item w-full text-left px-4 py-2 rounded-lg transition-all hover:bg-slate-800 hover:text-brand-400 text-slate-400 text-sm font-medium"
+                    data-target="functions">
+                    5. Functions & Scope
+                </button>
+                <button onclick="showSection('arrays')"
+                    class="nav-item w-full text-left px-4 py-2 rounded-lg transition-all hover:bg-slate-800 hover:text-brand-400 text-slate-400 text-sm font-medium"
+                    data-target="arrays">
+                    6. Arrays & Objects
+                </button>
+
+                <div class="pt-4 pb-2 text-xs font-semibold text-slate-600 uppercase tracking-wider pl-4">Web & Advanced
+                </div>
+
+                <button onclick="showSection('dom')"
+                    class="nav-item w-full text-left px-4 py-2 rounded-lg transition-all hover:bg-slate-800 hover:text-brand-400 text-slate-400 text-sm font-medium"
+                    data-target="dom">
+                    7. DOM & Events
+                </button>
+                <button onclick="showSection('async')"
+                    class="nav-item w-full text-left px-4 py-2 rounded-lg transition-all hover:bg-slate-800 hover:text-brand-400 text-slate-400 text-sm font-medium"
+                    data-target="async">
+                    8. Async JS
+                </button>
+                <button onclick="showSection('oop')"
+                    class="nav-item w-full text-left px-4 py-2 rounded-lg transition-all hover:bg-slate-800 hover:text-brand-400 text-slate-400 text-sm font-medium"
+                    data-target="oop">
+                    9. Object Oriented
+                </button>
+                <button onclick="showSection('es6')"
+                    class="nav-item w-full text-left px-4 py-2 rounded-lg transition-all hover:bg-slate-800 hover:text-brand-400 text-slate-400 text-sm font-medium"
+                    data-target="es6">
+                    10. ES6+ Features
+                </button>
+                <button onclick="showSection('storage')"
+                    class="nav-item w-full text-left px-4 py-2 rounded-lg transition-all hover:bg-slate-800 hover:text-brand-400 text-slate-400 text-sm font-medium"
+                    data-target="storage">
+                    11. Local Storage
+                </button>
+
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto relative scroll-smooth p-6 md:p-10 ml-0 md:ml-64">
+            <!-- Mobile Header -->
+            <div class="md:hidden flex items-center justify-between mb-8">
+                <h1
+                    class="text-xl font-bold bg-gradient-to-r from-brand-500 to-purple-500 bg-clip-text text-transparent">
+                    JS Master</h1>
+            </div>
+
+            <div id="content-area" class="max-w-5xl mx-auto space-y-12">
+
+                <!-- Intro Section -->
+                <section id="intro" class="learning-section animate-fade-in block">
+                    <div class="text-center py-16">
+                        <h2 class="text-5xl font-bold mb-6">Introduction to <span
+                                class="text-brand-500">JavaScript</span></h2>
+                        <p class="text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+                            JavaScript is a <span class="text-brand-400 font-semibold">high-level, dynamic programming
+                                language</span> used to create interactive and dynamic web pages.
+                        </p>
+                        <button onclick="showSection('variables')"
+                            class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white rounded-full font-semibold transition-all shadow-lg shadow-brand-500/20">
+                            Start Learning
+                        </button>
+                    </div>
+                </section>
+
+                <!-- 1. Variables -->
+                <section id="variables" class="learning-section hidden">
+                    <div class="border-b border-slate-800 pb-6 mb-8 flex justify-between items-end">
+                        <h2 class="text-3xl font-bold mb-2">1. Variables</h2>
+                    </div>
+
+                    <div class="space-y-8">
+
+                        <!-- 1. Definition (Full Width) -->
+                        <div class="glass p-8 rounded-2xl border-l-4 border-brand-500">
+                            <h3 class="text-xl font-bold text-brand-400 mb-4">What is a Variable?</h3>
+                            <div class="flex flex-col md:flex-row gap-6 items-start">
+                                <div class="flex-1">
+                                    <p class="text-slate-300 mb-4 text-lg">A variable is a container used to store
+                                        data so that it can be reused and changed later.</p>
+                                    <p class="text-slate-400 text-sm">Think of it like a box with a label. You can
+                                        put things in (assignment) and take them out (usage).</p>
+                                </div>
+                                <div
+                                    class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-sm text-slate-300 min-w-[250px]">
+                                    <span class="text-purple-400">let</span> name = <span
+                                        class="text-green-400">"Rubini"</span>;<br>
+                                    <span class="text-purple-400">const</span> age = <span
+                                        class="text-yellow-400">25</span>;
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. The 3 Keywords (3-Column Grid) -->
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                                <span
+                                    class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-sm">2</span>
+                                Declaration Keywords
+                            </h3>
+                            <div class="grid md:grid-cols-3 gap-6">
+
+                                <!-- Var -->
+                                <div
+                                    class="glass p-6 rounded-2xl border-t-4 border-yellow-500 hover:bg-slate-800/50 transition-colors">
+                                    <div class="flex justify-between items-start mb-4">
+                                        <h4 class="text-2xl font-bold text-yellow-500 font-mono">var</h4>
+                                        <span
+                                            class="px-2 py-1 bg-yellow-500/10 text-yellow-500 text-xs rounded border border-yellow-500/20">Old</span>
+                                    </div>
+                                    <ul class="space-y-3 text-sm text-slate-300 mb-6">
+                                        <li class="flex items-center gap-2 text-red-300"><span
+                                                class="text-red-500">❌</span> Function Scoped</li>
+                                        <li class="flex items-center gap-2"><span class="text-green-500">✅</span>
+                                            Redeclarable</li>
+                                        <li class="flex items-center gap-2"><span class="text-green-500">✅</span>
+                                            Reassignable</li>
+                                    </ul>
+                                    <div class="bg-black/50 p-3 rounded text-xs font-mono text-slate-400">
+                                        var x = 10;<br>
+                                        var x = 20; // Allowed
+                                    </div>
+                                </div>
+
+                                <!-- Let -->
+                                <div
+                                    class="glass p-6 rounded-2xl border-t-4 border-blue-500 hover:bg-slate-800/50 transition-colors">
+                                    <div class="flex justify-between items-start mb-4">
+                                        <h4 class="text-2xl font-bold text-blue-500 font-mono">let</h4>
+                                        <span
+                                            class="px-2 py-1 bg-blue-500/10 text-blue-500 text-xs rounded border border-blue-500/20">New</span>
+                                    </div>
+                                    <ul class="space-y-3 text-sm text-slate-300 mb-6">
+                                        <li class="flex items-center gap-2 text-green-300"><span
+                                                class="text-green-500">✔</span> Block Scoped</li>
+                                        <li class="flex items-center gap-2 text-red-300"><span
+                                                class="text-red-500">❌</span> No Redeclare</li>
+                                        <li class="flex items-center gap-2"><span class="text-green-500">✅</span>
+                                            Reassignable</li>
+                                    </ul>
+                                    <div class="bg-black/50 p-3 rounded text-xs font-mono text-slate-400">
+                                        let y = 10;<br>
+                                        y = 20; // Allowed
+                                    </div>
+                                </div>
+
+                                <!-- Const -->
+                                <div
+                                    class="glass p-6 rounded-2xl border-t-4 border-green-500 hover:bg-slate-800/50 transition-colors">
+                                    <div class="flex justify-between items-start mb-4">
+                                        <h4 class="text-2xl font-bold text-green-500 font-mono">const</h4>
+                                        <span
+                                            class="px-2 py-1 bg-green-500/10 text-green-500 text-xs rounded border border-green-500/20">Best</span>
+                                    </div>
+                                    <ul class="space-y-3 text-sm text-slate-300 mb-6">
+                                        <li class="flex items-center gap-2 text-green-300"><span
+                                                class="text-green-500">✔</span> Block Scoped</li>
+                                        <li class="flex items-center gap-2 text-red-300"><span
+                                                class="text-red-500">❌</span> No Redeclare</li>
+                                        <li class="flex items-center gap-2 text-red-300"><span
+                                                class="text-red-500">❌</span> No Reassign</li>
+                                    </ul>
+                                    <div class="bg-black/50 p-3 rounded text-xs font-mono text-slate-400">
+                                        const z = 10;<br>
+                                        z = 20; // Error
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Comparison & Demo -->
+                        <div class="grid lg:grid-cols-2 gap-8">
+
+                            <!-- Comparison Table -->
+                            <div class="glass p-6 rounded-2xl">
+                                <h3 class="text-lg font-bold text-white mb-4">Quick Comparison</h3>
+                                <div class="overflow-hidden rounded-xl border border-slate-700">
+                                    <table class="w-full text-sm text-center text-slate-300">
+                                        <thead class="bg-slate-800 text-brand-400 text-xs uppercase font-bold">
+                                            <tr>
+                                                <th class="px-4 py-3 text-left">Feature</th>
+                                                <th class="px-4 py-3 text-yellow-500">var</th>
+                                                <th class="px-4 py-3 text-blue-500">let</th>
+                                                <th class="px-4 py-3 text-green-500">const</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-slate-700 bg-slate-900/50">
+                                            <tr>
+                                                <td class="px-4 py-2 text-left font-medium">Scope</td>
+                                                <td>Function</td>
+                                                <td>Block</td>
+                                                <td>Block</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-4 py-2 text-left font-medium">Redeclare</td>
+                                                <td>✅</td>
+                                                <td>❌</td>
+                                                <td>❌</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-4 py-2 text-left font-medium">Reassign</td>
+                                                <td>✅</td>
+                                                <td>✅</td>
+                                                <td>❌</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-4 py-2 text-left font-medium">Hoisting</td>
+                                                <td>Undef</td>
+                                                <td>TDZ</td>
+                                                <td>TDZ</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div
+                                    class="mt-4 p-4 rounded-xl bg-emerald-900/20 border border-emerald-500/30 flex items-center gap-3">
+                                    <span class="text-2xl float-left">💡</span>
+                                    <p class="text-sm text-emerald-200">
+                                        <strong>Best Practice:</strong> Use <code class="text-green-400">const</code> by
+                                        default. Use <code class="text-blue-400">let</code> only when you know the value
+                                        will
+                                        change. Avoid <code class="text-yellow-500">var</code>.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Demo -->
+                            <div class="glass p-6 rounded-2xl flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-lg font-semibold mb-2 text-white">🎮 Hands-on Demo</h3>
+                                    <p class="text-sm text-slate-400 mb-6">See how <code
+                                            class="text-green-400">const</code> prevents changes while <code
+                                            class="text-blue-400">let</code> allows them.</p>
+
+                                    <div class="grid grid-cols-2 gap-4 mb-6">
+                                        <button onclick="updateScore()"
+                                            class="p-4 bg-slate-800 hover:bg-slate-700 rounded-xl border border-slate-700 transition-all text-left group">
+                                            <div class="text-xs text-blue-400 font-mono mb-1">let score = ...</div>
+                                            <div class="text-sm text-white font-bold group-hover:text-blue-400">
+                                                Increment Score</div>
+                                        </button>
+                                        <button onclick="updateMax()"
+                                            class="p-4 bg-slate-800 hover:bg-slate-700 rounded-xl border border-slate-700 transition-all text-left group">
+                                            <div class="text-xs text-green-400 font-mono mb-1">const max = ...</div>
+                                            <div class="text-sm text-white font-bold group-hover:text-red-400">Try
+                                                Changing</div>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="bg-black/80 rounded-xl p-4 font-mono text-xs border border-slate-800">
+                                    <div class="text-slate-500 mb-2">// Console Output:</div>
+                                    <div id="varConsole" class="text-green-400 min-h-[40px]">Waiting for input...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- 2. Data Types -->
+                <section id="datatypes" class="learning-section hidden">
+                    <div class="border-b border-slate-800 pb-6 mb-8 flex justify-between items-end">
+                        <h2 class="text-3xl font-bold mb-2">2. Data Types</h2>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="mb-10">
+                            <p class="text-slate-400">JavaScript variables can hold different types of data. There are
+                                two main categories:</p>
+                        </div>
+
+                        <!-- 1. Primitive Types -->
+                        <div class="mb-12">
+                            <h3 class="text-xl font-bold text-brand-400 mb-6 flex items-center gap-2">
+                                <span class="p-1 bg-brand-500/20 rounded text-xs">P</span> Primitive Data Types
+                            </h3>
+
+                            <div class="glass p-6 rounded-2xl border-l-4 border-brand-500 mb-8">
+                                <h4 class="font-bold text-white mb-2">What are Primitive Types?</h4>
+                                <ul class="list-disc list-inside text-sm text-slate-300 space-y-1">
+                                    <li><strong>Immutable:</strong> Cannot be changed.</li>
+                                    <li><strong>Stored by Value:</strong> Directly stores the data.</li>
+                                    <li><strong>Not Objects:</strong> No methods (mostly).</li>
+                                </ul>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                                <!-- Number -->
+                                <div
+                                    class="glass p-5 rounded-xl border border-slate-700/50 hover:border-brand-500/50 transition-colors group">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <h4 class="font-bold text-white group-hover:text-brand-400">1️⃣ Number</h4>
+                                        <span class="text-xs bg-slate-800 px-2 py-1 rounded text-slate-400">123</span>
+                                    </div>
+                                    <p class="text-xs text-slate-400 mb-3">Integers & decimals. Includes <code
+                                            class="text-red-400">NaN</code>.</p>
+                                    <div class="bg-black/50 p-2 rounded text-xs font-mono text-slate-300">
+                                        let age = 25;<br>
+                                        let price = 99.5;
+                                    </div>
+                                </div>
+
+                                <!-- String -->
+                                <div
+                                    class="glass p-5 rounded-xl border border-slate-700/50 hover:border-brand-500/50 transition-colors group">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <h4 class="font-bold text-white group-hover:text-brand-400">2️⃣ String</h4>
+                                        <span class="text-xs bg-slate-800 px-2 py-1 rounded text-slate-400">"Abc"</span>
+                                    </div>
+                                    <p class="text-xs text-slate-400 mb-3">Text data in quotes or backticks.</p>
+                                    <div class="bg-black/50 p-2 rounded text-xs font-mono text-slate-300">
+                                        let name = "Rubini";<br>
+                                        let msg = `Hi ${name}`;
+                                    </div>
+                                </div>
+
+                                <!-- Boolean -->
+                                <div
+                                    class="glass p-5 rounded-xl border border-slate-700/50 hover:border-brand-500/50 transition-colors group">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <h4 class="font-bold text-white group-hover:text-brand-400">3️⃣ Boolean</h4>
+                                        <span class="text-xs bg-slate-800 px-2 py-1 rounded text-slate-400">T/F</span>
+                                    </div>
+                                    <p class="text-xs text-slate-400 mb-3">True or false. Used in logic.</p>
+                                    <div class="bg-black/50 p-2 rounded text-xs font-mono text-slate-300">
+                                        let isCool = true;<br>
+                                        let isDone = false;
+                                    </div>
+                                </div>
+
+                                <!-- Undefined -->
+                                <div
+                                    class="glass p-5 rounded-xl border border-slate-700/50 hover:border-brand-500/50 transition-colors group">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <h4 class="font-bold text-white group-hover:text-brand-400">4️⃣ Undefined</h4>
+                                        <span class="text-xs bg-slate-800 px-2 py-1 rounded text-slate-400">?</span>
+                                    </div>
+                                    <p class="text-xs text-slate-400 mb-3">Declared but not assigned.</p>
+                                    <div class="bg-black/50 p-2 rounded text-xs font-mono text-slate-300">
+                                        let x;<br>
+                                        console.log(x); // undefined
+                                    </div>
+                                </div>
+
+                                <!-- Null -->
+                                <div
+                                    class="glass p-5 rounded-xl border border-slate-700/50 hover:border-brand-500/50 transition-colors group">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <h4 class="font-bold text-white group-hover:text-brand-400">5️⃣ Null</h4>
+                                        <span class="text-xs bg-slate-800 px-2 py-1 rounded text-slate-400">Ø</span>
+                                    </div>
+                                    <p class="text-xs text-slate-400 mb-3">Intentionally empty value.</p>
+                                    <div class="bg-black/50 p-2 rounded text-xs font-mono text-slate-300">
+                                        let data = null;<br>
+                                        <span class="text-slate-500">// typeof null is 'object'</span>
+                                    </div>
+                                </div>
+
+                                <!-- Symbol -->
+                                <div
+                                    class="glass p-5 rounded-xl border border-slate-700/50 hover:border-brand-500/50 transition-colors group">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <h4 class="font-bold text-white group-hover:text-brand-400">6️⃣ Symbol</h4>
+                                        <span class="text-xs bg-slate-800 px-2 py-1 rounded text-slate-400">key</span>
+                                    </div>
+                                    <p class="text-xs text-slate-400 mb-3">Unique identifier (ES6).</p>
+                                    <div class="bg-black/50 p-2 rounded text-xs font-mono text-slate-300">
+                                        let id = Symbol("id");<br>
+                                        // unique keys
+                                    </div>
+                                </div>
+
+                                <!-- BigInt -->
+                                <div
+                                    class="glass p-5 rounded-xl border border-slate-700/50 hover:border-brand-500/50 transition-colors group">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <h4 class="font-bold text-white group-hover:text-brand-400">7️⃣ BigInt</h4>
+                                        <span class="text-xs bg-slate-800 px-2 py-1 rounded text-slate-400">99n</span>
+                                    </div>
+                                    <p class="text-xs text-slate-400 mb-3">Very large integers.</p>
+                                    <div class="bg-black/50 p-2 rounded text-xs font-mono text-slate-300">
+                                        let big = 123456789n;<br>
+                                        // ends with n
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- 2. Non-Primitive Types -->
+                        <div class="mt-12">
+                            <h3 class="text-xl font-bold text-purple-400 mb-6 flex items-center gap-2">
+                                <span class="p-1 bg-purple-500/20 rounded text-xs">NP</span> Non-Primitive Data Types
+                            </h3>
+
+                            <!-- Definition -->
+                            <div class="glass p-6 rounded-2xl border-l-4 border-purple-500 mb-8">
+                                <h4 class="font-bold text-white mb-2">What are Non-Primitive Types?</h4>
+                                <ul class="list-disc list-inside text-sm text-slate-300 space-y-2">
+                                    <li><strong>Reference Types:</strong> Variables store a reference (memory address),
+                                        not the actual value.</li>
+                                    <li><strong>Mutable:</strong> They can be changed after creation.</li>
+                                    <li><strong>Complex:</strong> Can store multiple values or behaviors (Collections).
+                                    </li>
+                                    <li><strong>Heap Memory:</strong> Stored in heap memory, unlike stack for
+                                        primitives.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Main Types Grid -->
+                            <div class="grid md:grid-cols-2 gap-6 mb-8">
+
+                                <!-- 1. Array -->
+                                <div
+                                    class="glass p-6 rounded-xl border border-slate-700/50 hover:border-purple-500/50 transition-colors group">
+                                    <div class="flex justify-between items-start mb-4">
+                                        <h4 class="text-lg font-bold text-white group-hover:text-purple-400">1️⃣ Array
+                                        </h4>
+                                        <span class="text-xs bg-slate-800 px-2 py-1 rounded text-slate-400">Ordered
+                                            List</span>
+                                    </div>
+                                    <p class="text-sm text-slate-400 mb-4">An ordered collection of values
+                                        (zero-indexed). Can store mixed types.</p>
+
+                                    <div class="space-y-3">
+                                        <div class="bg-black/50 p-3 rounded-lg text-xs font-mono text-slate-300">
+                                            <span class="text-slate-500">// Declaration</span><br>
+                                            let fruits = [<span class="text-green-400">"Apple"</span>, <span
+                                                class="text-green-400">"Banana"</span>];<br><br>
+
+                                            <span class="text-slate-500">// Access</span><br>
+                                            fruits[0]; <span class="text-slate-500">// "Apple"</span><br><br>
+
+                                            <span class="text-slate-500">// Modify</span><br>
+                                            fruits.push(<span class="text-green-400">"Mango"</span>);<br>
+                                            fruits[1] = <span class="text-green-400">"Grapes"</span>;
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 2. Object -->
+                                <div
+                                    class="glass p-6 rounded-xl border border-slate-700/50 hover:border-purple-500/50 transition-colors group">
+                                    <div class="flex justify-between items-start mb-4">
+                                        <h4 class="text-lg font-bold text-white group-hover:text-purple-400">2️⃣ Object
+                                        </h4>
+                                        <span
+                                            class="text-xs bg-slate-800 px-2 py-1 rounded text-slate-400">Key-Value</span>
+                                    </div>
+                                    <p class="text-sm text-slate-400 mb-4">Stores data in key-value pairs. Keys are
+                                        properties, values can be anything.</p>
+
+                                    <div class="space-y-3">
+                                        <div class="bg-black/50 p-3 rounded-lg text-xs font-mono text-slate-300">
+                                            <span class="text-slate-500">// Declaration</span><br>
+                                            let student = {<br>
+                                            &nbsp;&nbsp;name: <span class="text-green-400">"Rubini"</span>,<br>
+                                            &nbsp;&nbsp;age: <span class="text-yellow-400">25</span><br>
+                                            };<br><br>
+
+                                            <span class="text-slate-500">// Access & Modify</span><br>
+                                            log(student.name); <span class="text-slate-500">// "Rubini"</span><br>
+                                            student.age = 26;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. Function (Detailed Block) -->
+                            <div
+                                class="glass p-6 rounded-xl border border-slate-700/50 hover:border-purple-500/50 transition-colors mb-8">
+                                <div class="flex justify-between items-start mb-6">
+                                    <h4 class="text-xl font-bold text-white">3️⃣ Function</h4>
+                                    <span class="text-xs bg-slate-800 px-2 py-1 rounded text-slate-400">Callable
+                                        Object</span>
+                                </div>
+                                <p class="text-slate-300 mb-6">A block of reusable code that performs a specific task.
+                                    In JS, functions are objects.</p>
+
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <!-- Named Function -->
+                                    <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-800">
+                                        <h5 class="text-sm font-bold text-brand-400 mb-2">1. Named Function</h5>
+                                        <div class="bg-black/50 p-2 rounded text-xs font-mono text-slate-300">
+                                            function hello() {<br>
+                                            &nbsp;&nbsp;log("Hello World");<br>
+                                            }<br>
+                                            hello();
+                                        </div>
+                                    </div>
+
+                                    <!-- Anonymous Function -->
+                                    <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-800">
+                                        <h5 class="text-sm font-bold text-brand-400 mb-2">2. Anonymous Function</h5>
+                                        <div class="bg-black/50 p-2 rounded text-xs font-mono text-slate-300">
+                                            let greet = function() {<br>
+                                            &nbsp;&nbsp;log("Hi there");<br>
+                                            };<br>
+                                            greet();
+                                        </div>
+                                    </div>
+
+                                    <!-- Arrow Function -->
+                                    <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-800">
+                                        <h5 class="text-sm font-bold text-brand-400 mb-2">3. Arrow Function (ES6)</h5>
+                                        <div class="bg-black/50 p-2 rounded text-xs font-mono text-slate-300">
+                                            const add = (a, b) => a + b;<br>
+                                            log(add(5, 10)); // 15
+                                        </div>
+                                    </div>
+
+                                    <!-- IIFE -->
+                                    <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-800">
+                                        <h5 class="text-sm font-bold text-brand-400 mb-2">4. IIFE</h5>
+                                        <div class="bg-black/50 p-2 rounded text-xs font-mono text-slate-300">
+                                            (function() {<br>
+                                            &nbsp;&nbsp;log("Executed immediately");<br>
+                                            })();
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Reference Concept -->
+                            <div class="glass p-6 rounded-xl border border-slate-700 bg-slate-900/30">
+                                <h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
+                                    <span class="text-brand-400">🔍</span> Stored by Reference (Important)
+                                </h4>
+                                <div class="flex flex-col md:flex-row gap-6 items-center">
+                                    <div
+                                        class="flex-1 bg-black/50 p-4 rounded-lg font-mono text-xs text-slate-300 w-full">
+                                        let arr1 = [1, 2];<br>
+                                        let arr2 = arr1; <span class="text-slate-500">// Reference copy</span><br><br>
+                                        arr2.push(3);<br><br>
+                                        console.log(arr1); <span class="text-green-400">// [1, 2, 3]</span>
+                                    </div>
+                                    <div class="text-xs text-slate-400 flex-1">
+                                        <p class="leading-relaxed">Because <code class="text-purple-400">arr2</code>
+                                            points to the same <strong class="text-white">memory address</strong> as
+                                            <code class="text-purple-400">arr1</code>, modifying one affects the other.
+                                            This is different from primitive types!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- 3. Operators -->
+                <section id="operators" class="learning-section hidden">
+                    <div class="border-b border-slate-800 pb-6 mb-8 flex justify-between items-end">
+                        <h2 class="text-3xl font-bold mb-2">3. Operators</h2>
+                    </div>
+
+                    <div class="space-y-8">
+
+                        <!-- 1. Definition (Full Width) -->
+                        <div class="glass p-8 rounded-2xl border-l-4 border-brand-500">
+                            <h3 class="text-xl font-bold text-brand-400 mb-4">What are Operators?</h3>
+                            <div class="flex flex-col md:flex-row gap-6 items-start">
+                                <div class="flex-1">
+                                    <p class="text-slate-300 mb-4 text-lg">Operators are symbols used to perform
+                                        operations on values (operands).</p>
+                                    <p class="text-slate-400 text-sm">👉 In simple words: Operators tell JavaScript what
+                                        action to perform.</p>
+                                </div>
+                                <div
+                                    class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-sm text-slate-300 min-w-[250px]">
+                                    let a = <span class="text-yellow-400">10</span>;<br>
+                                    let b = <span class="text-yellow-400">5</span>;<br>
+                                    let sum = a <span class="text-brand-400">+</span> b;
+                                    <span class="text-slate-500">//
+                                        + is an operator</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Types of Operators (2x2 Grid) -->
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                                <span
+                                    class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-sm">2</span>
+                                Types of Operators
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+
+                                <!-- Arithmetic -->
+                                <div
+                                    class="glass p-6 rounded-2xl border-t-4 border-blue-500 hover:bg-slate-800/50 transition-colors">
+                                    <h4 class="text-lg font-bold text-blue-500 mb-4 flex items-center gap-2">
+                                        <span class="text-xl">➕</span> Arithmetic
+                                    </h4>
+                                    <p class="text-sm text-slate-400 mb-4">Used for mathematical calculations.</p>
+                                    <table class="w-full text-xs text-left text-slate-300 mb-4">
+                                        <tbody class="divide-y divide-slate-800">
+                                            <tr>
+                                                <td class="py-1 font-mono text-brand-400">+</td>
+                                                <td>Addition</td>
+                                                <td class="text-right font-mono">10+5=15</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1 font-mono text-brand-400">-</td>
+                                                <td>Subtraction</td>
+                                                <td class="text-right font-mono">10-5=5</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1 font-mono text-brand-400">*</td>
+                                                <td>Multiplication</td>
+                                                <td class="text-right font-mono">10*5=50</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1 font-mono text-brand-400">/</td>
+                                                <td>Division</td>
+                                                <td class="text-right font-mono">10/5=2</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="bg-black/50 p-3 rounded text-xs font-mono text-slate-400">
+                                        let x = 10, y = 3;<br>
+                                        console.log(x % y); // 1 (Remainder)
+                                    </div>
+                                </div>
+
+                                <!-- Assignment -->
+                                <div
+                                    class="glass p-6 rounded-2xl border-t-4 border-yellow-500 hover:bg-slate-800/50 transition-colors">
+                                    <h4 class="text-lg font-bold text-yellow-500 mb-4 flex items-center gap-2">
+                                        <span class="text-xl">📥</span> Assignment
+                                    </h4>
+                                    <p class="text-sm text-slate-400 mb-4">Used to assign values.</p>
+                                    <table class="w-full text-xs text-left text-slate-300 mb-4">
+                                        <tbody class="divide-y divide-slate-800">
+                                            <tr>
+                                                <td class="py-1 font-mono text-yellow-400">=</td>
+                                                <td>Assign</td>
+                                                <td class="text-right font-mono">x = 10</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1 font-mono text-yellow-400">+=</td>
+                                                <td>Add & Assign</td>
+                                                <td class="text-right font-mono">x += 5</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1 font-mono text-yellow-400">-=</td>
+                                                <td>Sub & Assign</td>
+                                                <td class="text-right font-mono">x -= 2</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="bg-black/50 p-3 rounded text-xs font-mono text-slate-400">
+                                        let a = 10;<br>
+                                        a += 5; // a is now 15
+                                    </div>
+                                </div>
+
+                                <!-- Comparison -->
+                                <div
+                                    class="glass p-6 rounded-2xl border-t-4 border-purple-500 hover:bg-slate-800/50 transition-colors">
+                                    <h4 class="text-lg font-bold text-purple-500 mb-4 flex items-center gap-2">
+                                        <span class="text-xl">⚖️</span> Comparison
+                                    </h4>
+                                    <p class="text-sm text-slate-400 mb-4">Compares two values. Returns boolean.</p>
+                                    <table class="w-full text-xs text-left text-slate-300 mb-4">
+                                        <tbody class="divide-y divide-slate-800">
+                                            <tr>
+                                                <td class="py-1 font-mono text-purple-400">==</td>
+                                                <td>Equal (Value)</td>
+                                                <td class="text-right font-mono text-green-400">5 == "5"</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1 font-mono text-purple-400">===</td>
+                                                <td>Strict (Type)</td>
+                                                <td class="text-right font-mono text-red-400">5 === "5"</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1 font-mono text-purple-400">!=</td>
+                                                <td>Not Equal</td>
+                                                <td class="text-right font-mono text-green-400">5 != 3</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="bg-black/50 p-3 rounded text-xs font-mono text-slate-400">
+                                        console.log(10 > 5); // true<br>
+                                        console.log(10 === "10"); // false
+                                    </div>
+                                </div>
+
+                                <!-- Logical -->
+                                <div
+                                    class="glass p-6 rounded-2xl border-t-4 border-green-500 hover:bg-slate-800/50 transition-colors">
+                                    <h4 class="text-lg font-bold text-green-500 mb-4 flex items-center gap-2">
+                                        <span class="text-xl">🧠</span> Logical
+                                    </h4>
+                                    <p class="text-sm text-slate-400 mb-4">Used for multiple conditions.</p>
+                                    <table class="w-full text-xs text-left text-slate-300 mb-4">
+                                        <tbody class="divide-y divide-slate-800">
+                                            <tr>
+                                                <td class="py-1 font-mono text-green-400">&&</td>
+                                                <td>AND</td>
+                                                <td class="text-right font-mono">Both true</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1 font-mono text-green-400">||</td>
+                                                <td>OR</td>
+                                                <td class="text-right font-mono">Any true</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1 font-mono text-green-400">!</td>
+                                                <td>NOT</td>
+                                                <td class="text-right font-mono">Invert</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="bg-black/50 p-3 rounded text-xs font-mono text-slate-400">
+                                        let age = 20;<br>
+                                        // true && true -> true<br>
+                                        console.log(age > 18 && age < 30); </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- 3. Interactive Demo (Sticky) -->
+                            <div class="glass p-6 rounded-2xl">
+                                <h3 class="text-lg font-semibold mb-4 text-white">🎮 Operator Playground</h3>
+                                <div
+                                    class="flex flex-col md:flex-row items-center justify-center gap-4 bg-slate-900/50 p-6 rounded-xl border border-slate-800/50">
+                                    <input type="number" id="opInput1" placeholder="10"
+                                        class="w-24 text-center bg-slate-800 border border-slate-700 rounded-lg p-3 text-white focus:border-brand-500 outline-none transition-all">
+
+                                    <select id="opSelect"
+                                        class="bg-slate-800 text-brand-400 font-bold rounded-lg p-3 border border-slate-700 outline-none cursor-pointer">
+                                        <option value="==">==</option>
+                                        <option value="===">===</option>
+                                        <option value=">">></option>
+                                        <option value="<">
+                                            << /option>
+                                        <option value="+">+</option>
+                                        <option value="-">-</option>
+                                        <option value="*">*</option>
+                                        <option value="/">/</option>
+                                        <option value="%">%</option>
+                                    </select>
+
+                                    <input type="number" id="opInput2" placeholder="5"
+                                        class="w-24 text-center bg-slate-800 border border-slate-700 rounded-lg p-3 text-white focus:border-brand-500 outline-none transition-all">
+
+                                    <button onclick="checkOperator()"
+                                        class="px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white rounded-lg font-bold shadow-lg shadow-brand-500/20 active:scale-95 transition-all">
+                                        Run
+                                    </button>
+                                </div>
+                                <div id="opResult"
+                                    class="mt-6 text-center text-xl font-mono text-slate-300 min-h-[1.75rem]">
+                                    Result will appear here...
+                                </div>
+                            </div>
+
+                        </div>
+                </section>
+
+                <!-- 4. Conditional Statements (Formerly Flow Control) -->
+                <section id="flow" class="learning-section hidden">
+                    <div class="border-b border-slate-800 pb-6 mb-8 flex justify-between items-end">
+                        <h2 class="text-3xl font-bold mb-2">4. Conditional Statements</h2>
+                    </div>
+
+                    <!-- ... content ... -->
+
+                    <!-- 5. Functions -->
+                    <section id="functions" class="learning-section hidden">
+                        <div class="border-b border-slate-800 pb-6 mb-8 flex justify-between items-end">
+                            <h2 class="text-3xl font-bold mb-2">5. Functions & Scope</h2>
+                        </div>
+
+                        <!-- ... content ... -->
+
+                        <!-- 6. Arrays -->
+                        <section id="arrays" class="learning-section hidden">
+                            <div class="border-b border-slate-800 pb-6 mb-8 flex justify-between items-end">
+                                <h2 class="text-3xl font-bold mb-2">6. Arrays & Objects</h2>
+                            </div>
+
+                            <!-- ... content ... -->
+
+                            <!-- 7. DOM -->
+                            <section id="dom" class="learning-section hidden">
+                                <div class="border-b border-slate-800 pb-6 mb-8 flex justify-between items-end">
+                                    <h2 class="text-3xl font-bold mb-2">7. DOM Manipulation</h2>
+                                </div>
+
+                                <!-- ... content ... -->
+
+                                <!-- 8. Async -->
+                                <section id="async" class="learning-section hidden">
+                                    <div class="border-b border-slate-800 pb-6 mb-8 flex justify-between items-end">
+                                        <h2 class="text-3xl font-bold mb-2">8. Asynchronous JS</h2>
+                                    </div>
+
+                                    <!-- ... content ... -->
+
+                                    <!-- 9. OOP -->
+                                    <section id="oop" class="learning-section hidden">
+                                        <div class="border-b border-slate-800 pb-6 mb-8 flex justify-between items-end">
+                                            <h2 class="text-3xl font-bold mb-2">9. Object Oriented JS</h2>
+                                        </div>
+
+                                        <!-- ... content ... -->
+
+                                        <!-- 10. ES6 -->
+                                        <section id="es6" class="learning-section hidden">
+                                            <div
+                                                class="border-b border-slate-800 pb-6 mb-8 flex justify-between items-end">
+                                                <h2 class="text-3xl font-bold mb-2">10. ES6+ Features</h2>
+                                            </div>
+
+                                            <!-- ... content ... -->
+
+                                            <!-- 11. Local Storage -->
+                                            <section id="storage" class="learning-section hidden">
+                                                <div
+                                                    class="border-b border-slate-800 pb-6 mb-8 flex justify-between items-end">
+                                                    <h2 class="text-3xl font-bold mb-2">11. Local Storage</h2>
+                                                </div>
+
+                                            </section>
+
+                                            <!-- 3. Conditional Statements (Formerly Flow Control) -->
+                                            <section id="flow" class="learning-section hidden">
+                                                <div
+                                                    class="border-b border-slate-800 pb-6 mb-8 flex justify-between items-end">
+                                                    <h2 class="text-3xl font-bold mb-2">3. Conditional Statements
+                                                    </h2>
+                                                </div>
+
+                                                <div class="space-y-8">
+
+                                                    <!-- 1. Definition -->
+                                                    <div class="glass p-8 rounded-2xl border-l-4 border-brand-500">
+                                                        <h3 class="text-xl font-bold text-brand-400 mb-4">What is a
+                                                            Conditional Statement?</h3>
+                                                        <div class="flex flex-col md:flex-row gap-8 items-start">
+                                                            <div class="flex-1">
+                                                                <p class="text-slate-300 mb-4 text-lg">A conditional
+                                                                    statement is used to make
+                                                                    decisions in a program.</p>
+                                                                <ul class="space-y-3 text-sm text-slate-400">
+                                                                    <li class="flex items-center gap-2"><span
+                                                                            class="text-green-500">✔</span> If
+                                                                        true → Code runs</li>
+                                                                    <li class="flex items-center gap-2"><span
+                                                                            class="text-red-500">❌</span> If false
+                                                                        → Code is skipped or else block runs</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div
+                                                                class="bg-slate-900 p-6 rounded-xl border border-slate-800 w-full md:w-auto min-w-[300px]">
+                                                                <h4
+                                                                    class="text-xs font-bold text-slate-500 uppercase mb-3">
+                                                                    Execution Flow</h4>
+                                                                <div
+                                                                    class="flex flex-col gap-2 text-center text-sm font-mono">
+                                                                    <div
+                                                                        class="p-2 bg-slate-800 rounded border border-slate-700 text-brand-300">
+                                                                        Evaluate Condition</div>
+                                                                    <div class="text-slate-600">↓</div>
+                                                                    <div class="flex gap-2 justify-center">
+                                                                        <div
+                                                                            class="p-2 bg-green-900/30 border border-green-500/30 rounded text-green-400 flex-1">
+                                                                            True</div>
+                                                                        <div
+                                                                            class="p-2 bg-red-900/30 border border-red-500/30 rounded text-red-400 flex-1">
+                                                                            False</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- 2. If & Else (Grid) -->
+                                                    <div class="grid md:grid-cols-2 gap-6">
+                                                        <!-- if block -->
+                                                        <div
+                                                            class="glass p-6 rounded-2xl border-t-4 border-blue-500 hover:bg-slate-800/50 transition-colors">
+                                                            <h4
+                                                                class="text-lg font-bold text-blue-500 mb-3 flex items-center gap-2">
+                                                                <span class="text-xl">1️⃣</span> if Statement
+                                                            </h4>
+                                                            <p class="text-sm text-slate-400 mb-4">Executes code
+                                                                only when the condition is <strong
+                                                                    class="text-green-400">true</strong>.</p>
+
+                                                            <div
+                                                                class="bg-black/50 p-4 rounded-lg font-mono text-sm text-slate-300 mb-4">
+                                                                <span class="text-purple-400">let</span> age =
+                                                                20;<br><br>
+                                                                <span class="text-purple-400">if</span> (age >= 18)
+                                                                {<br>
+                                                                &nbsp;&nbsp;console.log(<span
+                                                                    class="text-green-400">"Eligible"</span>);<br>
+                                                                }
+                                                            </div>
+                                                            <div
+                                                                class="text-xs text-slate-500 bg-slate-900/50 p-3 rounded">
+                                                                <strong class="text-slate-400">Flow:</strong> Check
+                                                                age >= 18 (True) → Print Message
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- if...else block -->
+                                                        <div
+                                                            class="glass p-6 rounded-2xl border-t-4 border-purple-500 hover:bg-slate-800/50 transition-colors">
+                                                            <h4
+                                                                class="text-lg font-bold text-purple-500 mb-3 flex items-center gap-2">
+                                                                <span class="text-xl">2️⃣</span> if...else Statement
+                                                            </h4>
+                                                            <p class="text-sm text-slate-400 mb-4">Executes one
+                                                                block if true, another if <strong
+                                                                    class="text-red-400">false</strong>.</p>
+
+                                                            <div
+                                                                class="bg-black/50 p-4 rounded-lg font-mono text-sm text-slate-300 mb-4">
+                                                                <span class="text-purple-400">let</span> marks =
+                                                                40;<br><br>
+                                                                <span class="text-purple-400">if</span> (marks >=
+                                                                50) {<br>
+                                                                &nbsp;&nbsp;console.log(<span
+                                                                    class="text-green-400">"Pass"</span>);<br>
+                                                                } <span class="text-purple-400">else</span> {<br>
+                                                                &nbsp;&nbsp;console.log(<span
+                                                                    class="text-red-400">"Fail"</span>);<br>
+                                                                }
+                                                            </div>
+                                                            <div
+                                                                class="text-xs text-slate-500 bg-slate-900/50 p-3 rounded">
+                                                                <strong class="text-slate-400">Flow:</strong> Check
+                                                                marks >= 50 (False) → Skip if →
+                                                                Run else
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- 3. For Loop With Table -->
+                                                    <div class="glass p-8 rounded-2xl border border-slate-700">
+                                                        <h3
+                                                            class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                                                            <span class="text-2xl">3️⃣</span> for Loop
+                                                        </h3>
+
+                                                        <div class="grid lg:grid-cols-2 gap-8">
+                                                            <div>
+                                                                <p class="text-slate-300 mb-4">Repeats a block of
+                                                                    code multiple times. Used when the
+                                                                    number of repetitions is known.</p>
+
+                                                                <div
+                                                                    class="bg-black/50 p-4 rounded-lg font-mono text-sm text-slate-300 mb-6 border-l-2 border-green-500">
+                                                                    <span class="text-purple-400">for</span> (<span
+                                                                        class="text-blue-400">let</span>
+                                                                    i = 1; i <= 5; i++) {<br>
+                                                                        &nbsp;&nbsp;console.log(i);<br>
+                                                                        }
+                                                                </div>
+                                                                <h4
+                                                                    class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">
+                                                                    Execution
+                                                                    Flow</h4>
+                                                                <ol
+                                                                    class="list-decimal list-inside text-sm text-slate-400 space-y-1 ml-2">
+                                                                    <li>Initialize <code
+                                                                            class="text-brand-300">i = 1</code>
+                                                                        (Runs once)</li>
+                                                                    <li>Check <code class="text-brand-300">i <= 5</code>
+                                                                    </li>
+                                                                    <li>If true → Run code</li>
+                                                                    <li>Increment <code
+                                                                            class="text-brand-300">i++</code></li>
+                                                                    <li>Repeat steps 2-4 until false</li>
+                                                                </ol>
+                                                            </div>
+
+                                                            <!-- Execution Table -->
+                                                            <div>
+                                                                <h4 class="text-sm font-bold text-white mb-4">🧠
+                                                                    Simple Execution Table</h4>
+                                                                <div
+                                                                    class="overflow-hidden rounded-xl border border-slate-700">
+                                                                    <table
+                                                                        class="w-full text-sm text-center text-slate-300">
+                                                                        <thead
+                                                                            class="bg-slate-800 text-brand-400 text-xs uppercase font-bold">
+                                                                            <tr>
+                                                                                <th class="px-4 py-2">Step</th>
+                                                                                <th class="px-4 py-2">i Value</th>
+                                                                                <th class="px-4 py-2">Condition</th>
+                                                                                <th class="px-4 py-2">Output</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody
+                                                                            class="divide-y divide-slate-700 bg-slate-900/50">
+                                                                            <tr>
+                                                                                <td>1</td>
+                                                                                <td class="font-mono text-blue-400">
+                                                                                    1</td>
+                                                                                <td class="text-green-400">true</td>
+                                                                                <td class="font-mono">1</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>2</td>
+                                                                                <td class="font-mono text-blue-400">
+                                                                                    2</td>
+                                                                                <td class="text-green-400">true</td>
+                                                                                <td class="font-mono">2</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>3</td>
+                                                                                <td class="font-mono text-blue-400">
+                                                                                    3</td>
+                                                                                <td class="text-green-400">true</td>
+                                                                                <td class="font-mono">3</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>4</td>
+                                                                                <td class="font-mono text-blue-400">
+                                                                                    4</td>
+                                                                                <td class="text-green-400">true</td>
+                                                                                <td class="font-mono">4</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>5</td>
+                                                                                <td class="font-mono text-blue-400">
+                                                                                    5</td>
+                                                                                <td class="text-green-400">true</td>
+                                                                                <td class="font-mono">5</td>
+                                                                            </tr>
+                                                                            <tr class="bg-red-900/10">
+                                                                                <td>6</td>
+                                                                                <td class="font-mono text-red-400">6
+                                                                                </td>
+                                                                                <td class="text-red-400">false</td>
+                                                                                <td class="text-slate-500 italic">
+                                                                                    Stop</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- 4. Interactive Demo -->
+                                                    <div class="glass p-6 rounded-2xl">
+                                                        <h3 class="text-lg font-semibold mb-4 text-white">🎮 Loop
+                                                            Visualizer</h3>
+                                                        <div class="flex flex-col md:flex-row items-center gap-6">
+                                                            <div class="flex-1">
+                                                                <p class="text-sm text-slate-400 mb-4">Click "Run
+                                                                    Loop" to see how the loop executes
+                                                                    step-by-step.</p>
+                                                                <button onclick="runLoopDemo()"
+                                                                    class="px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white rounded-lg font-bold shadow-lg shadow-brand-500/20 active:scale-95 transition-all">
+                                                                    Run Loop (1 to 5)
+                                                                </button>
+                                                            </div>
+                                                            <div class="flex-1 w-full bg-slate-900 p-4 rounded-xl border border-slate-800 min-h-[100px] flex items-center justify-center gap-2"
+                                                                id="loopVisualizer">
+                                                                <span class="text-slate-500 text-sm italic">Waiting
+                                                                    to run...</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </section>
+
+                                            <!-- 4. Functions -->
+                                            <section id="functions" class="learning-section hidden">
+                                                <div class="border-b border-slate-800 pb-6 mb-8">
+                                                    <h2 class="text-3xl font-bold mb-2">4. Functions & Scope</h2>
+                                                </div>
+                                                <div class="grid lg:grid-cols-2 gap-8">
+                                                    <!-- Definition -->
+                                                    <div class="glass p-8 rounded-2xl border-l-4 border-brand-500">
+                                                        <h3 class="text-xl font-bold text-brand-400 mb-4">What is a
+                                                            Function?</h3>
+                                                        <p class="text-slate-300 mb-4">A block of code designed to
+                                                            perform a particular task.
+                                                        </p>
+                                                        <div
+                                                            class="bg-slate-950 p-4 rounded text-sm font-mono text-slate-300">
+                                                            function greet(name) {<br>
+                                                            &nbsp;&nbsp;return "Hello " + name;<br>
+                                                            }
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Demo -->
+                                                    <div class="glass p-6 rounded-2xl">
+                                                        <h3 class="text-lg font-semibold mb-4 text-white">🎮
+                                                            Function Type Demo</h3>
+                                                        <button onclick="runFuncDemo('decl')"
+                                                            class="block w-full text-left px-4 py-3 bg-slate-800 rounded mb-2 hover:bg-slate-700">Run
+                                                            Function Declaration</button>
+                                                        <button onclick="runFuncDemo('arrow')"
+                                                            class="block w-full text-left px-4 py-3 bg-slate-800 rounded hover:bg-slate-700">Run
+                                                            Arrow Function</button>
+                                                        <div id="funcOutput"
+                                                            class="mt-4 p-3 bg-black rounded font-mono text-xs text-white min-h-[40px]">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                            <!-- 5. Arrays & Objects -->
+                                            <section id="arrays" class="learning-section hidden">
+                                                <div class="border-b border-slate-800 pb-6 mb-8">
+                                                    <h2 class="text-3xl font-bold mb-2">5. Arrays & Objects</h2>
+                                                </div>
+                                                <div class="grid lg:grid-cols-2 gap-8">
+                                                    <!-- Definition -->
+                                                    <div class="space-y-6">
+                                                        <div class="glass p-8 rounded-2xl border-l-4 border-brand-500">
+                                                            <h3 class="text-xl font-bold text-brand-400 mb-4">Arrays
+                                                            </h3>
+                                                            <p class="text-slate-300 mb-4">List-like objects.</p>
+                                                            <div
+                                                                class="bg-slate-950 p-4 rounded text-sm font-mono text-slate-300">
+                                                                let fruits = ["Apple", "Banana"];
+                                                            </div>
+                                                        </div>
+                                                        <div class="glass p-8 rounded-2xl border-l-4 border-purple-500">
+                                                            <h3 class="text-xl font-bold text-purple-400 mb-4">
+                                                                Objects</h3>
+                                                            <p class="text-slate-300 mb-4">Key-value pairs.</p>
+                                                            <div
+                                                                class="bg-slate-950 p-4 rounded text-sm font-mono text-slate-300">
+                                                                let car = { type: "Fiat", model: 500 };
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Demo -->
+                                                    <div class="glass p-6 rounded-2xl">
+                                                        <h3 class="text-lg font-semibold mb-4 text-white">🎮 Array
+                                                            Methods Demo</h3>
+                                                        <p class="text-sm text-slate-400 mb-2">Array: [1, 2, 3, 4,
+                                                            5]</p>
+                                                        <div class="flex flex-wrap gap-2 mb-4">
+                                                            <button onclick="runArrayMethod('map')"
+                                                                class="px-3 py-1 bg-slate-700 rounded text-xs text-white">.map(*2)</button>
+                                                            <button onclick="runArrayMethod('filter')"
+                                                                class="px-3 py-1 bg-slate-700 rounded text-xs text-white">.filter(>2)</button>
+                                                        </div>
+                                                        <div id="arrayOutput"
+                                                            class="p-3 bg-black rounded font-mono text-xs text-green-400">
+                                                            ...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                            <!-- 6. DOM -->
+                                            <section id="dom" class="learning-section hidden">
+                                                <div class="border-b border-slate-800 pb-6 mb-8">
+                                                    <h2 class="text-3xl font-bold mb-2">6. DOM Manipulation</h2>
+                                                </div>
+                                                <div class="grid lg:grid-cols-2 gap-8">
+                                                    <!-- Definition -->
+                                                    <div class="glass p-8 rounded-2xl border-l-4 border-brand-500">
+                                                        <h3 class="text-xl font-bold text-brand-400 mb-4">Document
+                                                            Object Model</h3>
+                                                        <p class="text-slate-300 mb-4">The DOM represents the page
+                                                            as a tree structure. JS can
+                                                            change the DOM.</p>
+                                                        <div
+                                                            class="bg-slate-950 p-4 rounded text-sm font-mono text-slate-300">
+                                                            document.getElementById("demo").innerHTML = "Hello";
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Demo -->
+                                                    <div class="glass p-6 rounded-2xl text-center">
+                                                        <div id="targetBox"
+                                                            class="w-24 h-24 bg-slate-700 rounded mx-auto mb-4 flex items-center justify-center">
+                                                            BOX
+                                                        </div>
+                                                        <div class="flex justify-center gap-2">
+                                                            <button onclick="domAction('color')"
+                                                                class="px-3 py-1 bg-red-500/20 text-red-300 rounded border border-red-500/50">Color</button>
+                                                            <button onclick="domAction('shape')"
+                                                                class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded border border-blue-500/50">Shape</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                            <!-- 7. Async -->
+                                            <section id="async" class="learning-section hidden">
+                                                <div class="border-b border-slate-800 pb-6 mb-8">
+                                                    <h2 class="text-3xl font-bold mb-2">7. Async JavaScript</h2>
+                                                </div>
+                                                <div class="grid lg:grid-cols-2 gap-8">
+                                                    <!-- Definition -->
+                                                    <div class="glass p-8 rounded-2xl border-l-4 border-brand-500">
+                                                        <h3 class="text-xl font-bold text-brand-400 mb-4">
+                                                            Asynchronous?</h3>
+                                                        <p class="text-slate-300 mb-4">Allows operations (like API
+                                                            calls) to run in the
+                                                            background
+                                                            without blocking execution.</p>
+                                                        <div
+                                                            class="bg-slate-950 p-4 rounded text-sm font-mono text-slate-300">
+                                                            async function getData() {<br>
+                                                            &nbsp;&nbsp;let res = await fetch(url);<br>
+                                                            }
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Demo -->
+                                                    <div class="glass p-6 rounded-2xl">
+                                                        <h3 class="text-lg font-semibold mb-4 text-white">🎮 Fetch
+                                                            Demo</h3>
+                                                        <button onclick="fetchDataSim()"
+                                                            class="px-4 py-2 bg-purple-600 rounded text-white text-sm mb-4">Simulate
+                                                            Fetch</button>
+                                                        <div id="asyncOutput"
+                                                            class="p-3 bg-black rounded font-mono text-xs text-yellow-300">
+                                                            Waiting...</div>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                            <!-- 8. OOP -->
+                                            <section id="oop" class="learning-section hidden">
+                                                <div class="border-b border-slate-800 pb-6 mb-8">
+                                                    <h2 class="text-3xl font-bold mb-2">8. Object Oriented JS</h2>
+                                                </div>
+                                                <div class="grid lg:grid-cols-2 gap-8">
+                                                    <!-- Definition -->
+                                                    <div class="glass p-8 rounded-2xl border-l-4 border-brand-500">
+                                                        <h3 class="text-xl font-bold text-brand-400 mb-4">Classes &
+                                                            Objects</h3>
+                                                        <p class="text-slate-300 mb-4">Classes are blueprints.
+                                                            Objects are instances.</p>
+                                                        <div
+                                                            class="bg-slate-950 p-4 rounded text-sm font-mono text-slate-300">
+                                                            class Car {<br>
+                                                            &nbsp;&nbsp;constructor(brand) { this.brand = brand;
+                                                            }<br>
+                                                            }
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Demo -->
+                                                    <div class="glass p-6 rounded-2xl">
+                                                        <h3 class="text-lg font-semibold mb-4 text-white">🎮 Robot
+                                                            Details</h3>
+                                                        <input type="text" id="robotName" placeholder="Robot Name"
+                                                            class="bg-slate-800 rounded px-3 py-2 text-white w-full mb-2">
+                                                        <div class="flex gap-2">
+                                                            <button onclick="createRobot()"
+                                                                class="flex-1 bg-brand-600 rounded py-2 text-sm text-white">Build</button>
+                                                            <button onclick="robotSpeak()"
+                                                                class="flex-1 bg-slate-700 rounded py-2 text-sm text-white">Speak</button>
+                                                        </div>
+                                                        <div id="oopOutput"
+                                                            class="mt-4 p-3 bg-black rounded font-mono text-xs text-orange-400">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                            <!-- 9. ES6 -->
+                                            <section id="es6" class="learning-section hidden">
+                                                <div class="border-b border-slate-800 pb-6 mb-8">
+                                                    <h2 class="text-3xl font-bold mb-2">9. ES6+ Features</h2>
+                                                </div>
+                                                <div class="grid lg:grid-cols-2 gap-8">
+                                                    <!-- Definition -->
+                                                    <div class="glass p-8 rounded-2xl border-l-4 border-brand-500">
+                                                        <h3 class="text-xl font-bold text-brand-400 mb-4">Modern
+                                                            Syntax</h3>
+                                                        <ul class="text-sm text-slate-300 space-y-2">
+                                                            <li><strong>Destructuring:</strong> Extracting values.
+                                                            </li>
+                                                            <li><strong>Spread (...):</strong> Expanding arrays.
+                                                            </li>
+                                                            <li><strong>Template Literals:</strong> `Hello ${name}`.
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <!-- Demo -->
+                                                    <div class="glass p-6 rounded-2xl">
+                                                        <h3 class="text-lg font-semibold mb-4 text-white">🎮 Spread
+                                                            Demo</h3>
+                                                        <p class="text-xs text-slate-400 mb-2">Arr: [1, 2, 3]</p>
+                                                        <button onclick="runES6Demo('spread')"
+                                                            class="w-full bg-slate-700 rounded py-2 text-white text-sm">Run
+                                                            spread ...</button>
+                                                        <div id="es6SpreadOutput"
+                                                            class="mt-2 p-2 bg-black rounded font-mono text-xs text-green-400">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                            <!-- 10. Local Storage -->
+                                            <section id="storage" class="learning-section hidden">
+                                                <div class="border-b border-slate-800 pb-6 mb-8">
+                                                    <h2 class="text-3xl font-bold mb-2">10. Local Storage</h2>
+                                                </div>
+                                                <div class="grid lg:grid-cols-2 gap-8">
+                                                    <!-- Definition -->
+                                                    <div class="glass p-8 rounded-2xl border-l-4 border-brand-500">
+                                                        <h3 class="text-xl font-bold text-brand-400 mb-4">Persistent
+                                                            Storage</h3>
+                                                        <p class="text-slate-300 mb-4">Save data in browser with no
+                                                            expiration.</p>
+                                                        <div
+                                                            class="bg-slate-950 p-4 rounded text-sm font-mono text-slate-300">
+                                                            localStorage.setItem("key", "value");
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Demo -->
+                                                    <div class="glass p-6 rounded-2xl">
+                                                        <h3 class="text-lg font-semibold mb-4 text-white">🎮 Notepad
+                                                        </h3>
+                                                        <textarea id="storageInput"
+                                                            class="w-full h-20 bg-slate-800 rounded p-2 text-white text-sm mb-2"
+                                                            placeholder="Type here..."></textarea>
+                                                        <div class="flex gap-2">
+                                                            <button onclick="saveNote()"
+                                                                class="flex-1 bg-green-600 rounded py-1 text-sm text-white">Save</button>
+                                                            <button onclick="clearNote()"
+                                                                class="flex-1 bg-red-600 rounded py-1 text-sm text-white">Clear</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>

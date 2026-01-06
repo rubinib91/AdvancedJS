@@ -1,0 +1,16 @@
+/* Custom styles to complement Tailwind */
+.accordion-button {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: white !important;
+}
+.accordion-button:not(.collapsed) {
+    background-color: rgba(14, 165, 233, 0.2) !important; /* brand-500 with opacity */
+    color: white !important;
+}
+.accordion-item {
+    background-color: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.accordion-body {
+    background-color: rgba(0, 0, 0, 0.2);
+}
